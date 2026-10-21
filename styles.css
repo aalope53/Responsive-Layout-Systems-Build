@@ -86,6 +86,7 @@ table {
             --space-sm: 1rem;
             --space-md: 1.5rem;
             --space-lg: 2rem;
+            --space-lg2: 3rem;
             --space-xl: 4rem;
 
         /* Shape */
@@ -97,6 +98,8 @@ table {
             --focus-color: #005fcc;
             --focus-width: 3px;
             --focus-offset: 3px;
+
+            --content-max: 70rem;
             
     }
 
@@ -166,34 +169,49 @@ table {
 
 @layer layout {
 
+
+        main {
+        inline-size: 100%;
+        }
+
+        .hero,
+        .featured,
+        .project,
+        .social {
+            inline-size: min(100% - 2rem, var(--content-max));
+            margin-inline: auto;
+            padding-block: clamp(3rem, 8vw, 8rem);
+            padding-inline: var(--space-sm);
+        }
+
+        .hero {
+            min-block-size: 60vh;
+            block-size: auto;
+            text-align: center;
+        }
+
+
         .site-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+             display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-sm);
          
 
         }
 
-
-        .hero {
-            padding: 40px;
-            text-align: center;
-            width: 100%;
-            height: 80vh;
-        }
-
         .hero p {
-            padding-bottom: 20px;
-
+            padding-block-end: var(--space-md);
         }
 
         .featured, .social {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 150px;
+        }
 
-
+        .featured {
+            container-type: inline-size;
         }
 
         /* .featured h2 {
@@ -227,10 +245,12 @@ table {
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(2, 200px);
+            grid-template-columns: repeat(auto-fit, minmax(12rem, 12rem));
             gap: var(--space-md);
             justify-content: center;
         }
+
+        
 
 
     }
@@ -241,9 +261,11 @@ table {
         /* Nav Selection */
 
         .nav-list {
-            display: flex;
-            gap: var(--space-lg);
+             display: flex;
+             flex-wrap: wrap;
+             gap: var(--space-sm);
         }
+
 
 
         .nav-list a {
@@ -347,45 +369,38 @@ table {
 
     /* Featured Card */
 
-        .featured-card {
+       .featured-card {
+            
             display: grid;
-            width: 500px;
-            height: 250px;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto 1fr auto;
+            grid-template-columns: 1fr;
+            inline-size: 100%;
+            max-inline-size: 20rem;
             background: var(--color-card);
-            overflow: hidden;
             color: var(--color-font);
-            text-decoration: none;
-        }
-
-        .featured-card h3 {
-            font-size: 18px;
-            margin-top: 35px;
-            margin-left: 12px;
-            grid-column: 2;
-            grid-row: 1;
-        }
-
-        .featured-card p {
-            margin-top: 30px;
-            margin-left: 12px;
-
-        }
-
-        .featured-card-content {
-            grid-column: 2;
-            grid-row: 2;
-
+            border: 2px solid var(--color-accent);
+            border-radius: var(--radius-medium);
+            overflow: hidden;
         }
 
         .featured-card img {
             width: 100%;
-            height: 100%;
+            height: 10rem;
             object-fit: cover;
-            grid-column: 1;
-            grid-row: 1 / 4;
         }
+
+        .featured-card-content {
+            padding: var(--space-md);
+            min-block-size: 13rem;
+        }
+
+        .featured-card h3 {
+            margin-block-end: var(--space-sm);
+        }
+
+        .featured-card p {
+            line-height: 1.5;
+        }
+        
 
         .featured-card-content a {
             display: inline-block;
@@ -394,6 +409,25 @@ table {
             grid-column: 2;
             grid-row: 3;
         }
+
+        @container (min-width: 32rem) {
+
+        .featured-card {
+            max-inline-size: 32rem;
+            grid-template-columns: 1fr 1fr;
+            min-block-size: 15rem;
+    }
+
+        .featured-card img {
+            inline-size: 100%;
+            block-size: 100%;
+            object-fit: cover;
+    }
+
+        .featured-card-content {
+            padding: var(--space-md);
+    }
+}
 
 
     /* Project Card */
@@ -410,8 +444,8 @@ table {
         .project-card {
              position: relative;
              display: block;
-             width: 200px;
-             height: 200px;
+             inline-size: 100%;
+             aspect-ratio: 1;
              border-radius: var(--radius-medium);
              overflow: hidden;
              border: solid var(--color-accent) 2px;
@@ -419,13 +453,7 @@ table {
 
         .project-card-text {
             position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 100%;
-
+            inset: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -439,7 +467,7 @@ table {
 
 
         .project-card-text p {
-            padding-top: 40px;
+            padding-block-start: 40px;
             font-size: 14px;
 
         }
@@ -450,14 +478,15 @@ table {
 
         .social-card {
             display: grid;
-            grid-template-columns: 25% 75%;
+            grid-template-columns: fit-content(9rem) minmax(0, 1fr);
             width: 100%;
-            max-width: 510px;
-            height: 120px;
+            inline-size: 100%;
+            max-inline-size: 32rem;
+            min-block-size: 5rem;
             background: var(--color-card);
             border-radius: var(--radius-medium);
             overflow: hidden;
-
+          
         }
 
         .social-card img {
@@ -627,6 +656,69 @@ table {
         padding: 20px 0;
         border-top: 1px solid #777;
     }
+}
+
+
+/* Media Queries */
+
+ @media (min-width: 45rem) {
+
+        .site-header {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-list {
+            gap: var(--space-lg2);
+        }
+
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+    .featured-card,
+    .project-card,
+    .social-card,
+    .project-card-text {
+        transition: none;
+    }
+
+    .featured-card:hover,
+    .project-card:hover,
+    .social-card:hover {
+        transform: none;
+        border-color: var(--color-primary);
+    }
+
+}
+
+/* Support Queries */
+
+@supports (container-type: inline-size) {
+
+    .featured {
+        container-type: inline-size;
+    }
+
+    @container (min-width: 32rem) {
+
+        .featured-card {
+            grid-template-columns: minmax(12rem, 1fr) 1fr;
+        }
+
+        .featured-card img {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .featured-card-content {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+    }
+
 }
 
     
