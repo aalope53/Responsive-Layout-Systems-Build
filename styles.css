@@ -1,0 +1,632 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
+
+
+@layer reset, base, layout, components, utilities, overrides;
+
+/* RESET */
+
+@layer reset    {
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+}
+
+@layer base  {
+
+    :root {
+    
+        /* Colors */
+            --color-primary: #9E1C19;
+            --color-secondary: #363131;
+            --color-background: #E6E6E6;
+            --color-font: #1A1A1A;
+            --color-card: #F2F2F2;
+            --color-accent: #BDBDBD;
+            --color-active: #858383;
+
+
+        /* Typography */
+        /* "Commissioner font needs to be imported */
+
+            --font-body: Commissioner, Arial,  ;
+            --font-size-base: 16px;
+            --font-size-large: 24px;
+            --font-size-heading: 2rem;
+
+        /* Spacing */
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 4rem;
+
+        /* Shape */
+            --radius-small: 0.25rem;
+            --radius-medium: 0.75rem;
+            --radius-large: 1rem;
+
+        /* Focus */
+            --focus-color: #005fcc;
+            --focus-width: 3px;
+            --focus-offset: 3px;
+            
+    }
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: 'Commissioner'
+        }
+
+    
+        h1 {
+
+        }
+
+        h2 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 40px;
+
+        }
+
+
+        a {
+            
+            text-decoration: none;
+        }
+
+        header {           
+            background: var(--color-primary);
+            padding-bottom: 20px;
+            padding: 30px;
+            color: white;
+            
+        }
+
+        nav {
+            
+        }
+
+        nav ul {
+          
+        }
+
+        
+
+        section {
+
+
+        }
+
+        img {
+
+
+        }
+
+        footer {
+            background-color: var(--color-secondary);
+            color: var(--color-card);
+            padding: 40px;
+
+        }
+
+}
+
+@layer layout {
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+         
+
+        }
+
+
+        .hero {
+            padding: 40px;
+            text-align: center;
+            width: 100%;
+            height: 80vh;
+        }
+
+        .hero p {
+            padding-bottom: 20px;
+
+        }
+
+        .featured, .social {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 150px;
+
+
+        }
+
+        /* .featured h2 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 40px;
+        } */
+
+        .skills {
+                padding: 150px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: var(--color-secondary);
+                color: var(--color-card);
+
+
+        }
+
+        .skills li {
+                font-size: 18px;
+                margin-bottom: 40px;
+                list-style-type: disc;
+        }
+
+        .project {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: var(--space-xl);
+            }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 200px);
+            gap: var(--space-md);
+            justify-content: center;
+        }
+
+
+    }
+
+
+    @layer components {
+
+        /* Nav Selection */
+
+        .nav-list {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+
+        .nav-list a {
+            color: var(--color-card);
+            text-decoration: none;
+
+
+        }
+        
+
+        .site-name {
+            color: var(--color-font);
+            text-decoration: none;
+            font-size: var(--font-size-large);
+        }
+
+        .nav-list li a:hover {
+            background-color: white;
+            padding: 10px;
+            color: var(--color-font);
+
+
+
+        }
+    
+
+    
+        /* Button */
+    
+    
+        .button {
+            display: block;
+            margin: 0 auto; 
+            background-color: var(--color-secondary);
+            border: 2px solid transparent;
+            color: var(--color-card);
+            padding: 15px;
+            border-radius: 20px;
+            font-size: 15px;
+            width: 150px;
+        }
+
+
+
+        .button:hover {
+            border: solid var(--color-secondary) 2px;
+            background-color: var(--color-accent);
+            color: var(--color-font);
+            width: 150px;
+        }
+
+
+        .button:active {
+            background-color: var(--color-active);
+            color: var(--color-card);
+        }
+
+
+    /* Card */
+
+
+        .featured-card, .social-card {
+            border: solid var(--color-accent) 2px;
+            border-radius: 7px;
+            margin: 20px;
+        }
+
+        
+        .featured-card:hover,
+        .social-card:hover {
+             transform: translateY(-15px);
+             transition: all 0.3s ease;
+             box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.15);
+        }
+
+         .featured-card:active,
+        .social-card:active {
+            opacity: 70%;
+        }
+
+
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            transition: all 0.3s ease;
+            box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.15);
+    
+             
+            
+        }
+
+        .project-card:hover .project-card-text {
+         opacity: 1;
+        }
+
+
+        .project-card:active {
+             opacity: 70%;
+        }
+
+
+    /* Featured Card */
+
+        .featured-card {
+            display: grid;
+            width: 500px;
+            height: 250px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto 1fr auto;
+            background: var(--color-card);
+            overflow: hidden;
+            color: var(--color-font);
+            text-decoration: none;
+        }
+
+        .featured-card h3 {
+            font-size: 18px;
+            margin-top: 35px;
+            margin-left: 12px;
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .featured-card p {
+            margin-top: 30px;
+            margin-left: 12px;
+
+        }
+
+        .featured-card-content {
+            grid-column: 2;
+            grid-row: 2;
+
+        }
+
+        .featured-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            grid-column: 1;
+            grid-row: 1 / 4;
+        }
+
+        .featured-card-content a {
+            display: inline-block;
+            margin-left: 75px;
+            margin-top: 40px;
+            grid-column: 2;
+            grid-row: 3;
+        }
+
+
+    /* Project Card */
+            .project-card img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+
+            /* Figure out how to fix border */
+        .project-card {
+             position: relative;
+             display: block;
+             width: 200px;
+             height: 200px;
+             border-radius: var(--radius-medium);
+             overflow: hidden;
+             border: solid var(--color-accent) 2px;
+        }
+
+        .project-card-text {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+
+            opacity: 0;
+     }
+
+
+        .project-card-text p {
+            padding-top: 40px;
+            font-size: 14px;
+
+        }
+
+       
+
+    /* Social Media Card */
+
+        .social-card {
+            display: grid;
+            grid-template-columns: 25% 75%;
+            width: 100%;
+            max-width: 510px;
+            height: 120px;
+            background: var(--color-card);
+            border-radius: var(--radius-medium);
+            overflow: hidden;
+
+        }
+
+        .social-card img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+             
+
+        }
+
+        .social-card-content {
+             padding: var(--space-sm);
+
+        }
+
+        .social-card h3 {
+            font-size: 18px;
+            padding-top: 7px;
+        }
+
+        .social-card p {
+            margin-top: 15px; 
+        }
+
+        .social-card a {
+            display: inline-block;
+        }
+
+        .social-card-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+
+    }
+
+@layer utilities {
+   
+    .text-center {
+        text-align: center;
+    }
+
+  
+    .margin-top-lg {
+        margin-top: var(--space-lg);
+    }
+
+    .max-width-text {
+        max-width: 65ch;
+    }
+
+}
+
+
+
+@layer overrides {
+    :focus-visible {
+            outline: solid rgb(2, 157, 230) 2px;
+            outline-offset: 4px;
+    }
+    
+
+    .nav-list a[aria-current="page"] {
+        font-weight: bold;
+        border-bottom: 3px solid var(--color-card);
+    }
+
+}
+
+/* Print Styles */
+
+    @media print {
+
+    body {
+        background: white;
+        color: black;
+        font-size: 11pt;
+        line-height: 1.4;
+    }
+
+
+    .site-header,
+    .button {
+        display: none;
+    }
+
+
+    /* Remove huge screen spacing */
+    .hero,
+    .featured,
+    .skills,
+    .project,
+    .social {
+        padding: 20px 0;
+        margin: 0;
+        height: auto;
+    }
+
+
+    /* Keep headings close to their content */
+    h1,
+    h2,
+    h3 {
+        break-after: avoid;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+
+    /* Don't split cards between two pages */
+    .featured-card,
+    .project-card,
+    .social-card {
+        break-inside: avoid;
+    }
+
+
+    /* Remove interactive screen effects */
+    .featured-card,
+    .project-card,
+    .social-card {
+        box-shadow: none;
+        transform: none;
+    }
+
+
+    /* Make images safe for the printed page */
+    img {
+        max-width: 100%;
+    }
+
+
+    /* Keep the project cards in a clean grid */
+    .project-grid {
+        grid-template-columns: repeat(2, 200px);
+        gap: 20px;
+    }
+
+
+    /* Hover doesn't exist on paper,
+       so make project information visible */
+    .project-card-text {
+        opacity: 1;
+    }
+
+    .skills {
+        background: white;
+        color: black;
+    }
+
+
+    /* Make cards easier to see without backgrounds */
+    .featured-card,
+    .project-card,
+    .social-card {
+        border: 1px solid #777;
+    }
+
+
+    /* Remove unnecessary footer styling */
+    footer {
+        background: white;
+        color: black;
+        padding: 20px 0;
+        border-top: 1px solid #777;
+    }
+}
+
+    
