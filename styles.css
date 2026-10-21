@@ -410,25 +410,7 @@ table {
             grid-row: 3;
         }
 
-        @container (min-width: 32rem) {
-
-        .featured-card {
-            max-inline-size: 32rem;
-            grid-template-columns: 1fr 1fr;
-            min-block-size: 15rem;
-    }
-
-        .featured-card img {
-            inline-size: 100%;
-            block-size: 100%;
-            object-fit: cover;
-    }
-
-        .featured-card-content {
-            padding: var(--space-md);
-    }
-}
-
+       
 
     /* Project Card */
             .project-card img {
@@ -695,7 +677,7 @@ table {
 
 /* Support Queries */
 
-@supports (container-type: inline-size) {
+ @supports (container-type: inline-size) {
 
     .featured {
         container-type: inline-size;
@@ -704,21 +686,23 @@ table {
     @container (min-width: 32rem) {
 
         .featured-card {
-            grid-template-columns: minmax(12rem, 1fr) 1fr;
-        }
+            max-inline-size: 32rem;
+            grid-template-columns: 1fr 1fr;
+            min-block-size: 15rem;
+    }
 
         .featured-card img {
-            grid-column: 1;
-            grid-row: 1;
-        }
+            inline-size: 100%;
+            block-size: 100%;
+            object-fit: cover;
+    }
 
         .featured-card-content {
-            grid-column: 2;
-            grid-row: 1;
-        }
+            padding: var(--space-md);
+    }
 
     }
 
-}
+}  
 
     

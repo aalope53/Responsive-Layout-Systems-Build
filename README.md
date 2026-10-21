@@ -13,7 +13,7 @@ Keyboard: Tab reaches navigation, featured project, project cards, and social li
 
 Reduced motion	Card movement disappears when prefers-reduced-motion: reduce is enabled.
 
-Container fallback: 
+Container fallback: Featured card remains usable as a one-column card when container-query enhancements are unavailable.
 
 Print: Navigation and unnecessary controls disappear, cards avoid page breaks, and project information remains visible.
 
